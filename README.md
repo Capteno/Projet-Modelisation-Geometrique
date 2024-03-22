@@ -1,1 +1,1 @@
-# Projet-Mod-lisation-G-om-trique
+# Projet-Modelisation-Geometrique
