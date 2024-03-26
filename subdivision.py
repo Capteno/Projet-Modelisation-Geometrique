@@ -69,7 +69,16 @@ def catmull_clark(dico):
 
     return {"faces": np.array(new_faces), "sommets": np.array(new_vertices), "aretes": set(tuple(sorted([face[i], face[(i+1)%len(face)]])) for face in new_faces for i in range(len(face))), 'nsommets': len(new_vertices)}
 
+def calculate_angle(dico, edge):
+    faces = get_faces_from_edge(dico, edge)
 
+    normals = [np.cross(dico["sommets"][face[1]] - dico["sommets"][face[0]], dico["sommets"][face[2]] - dico["sommets"][face[0]]) for face in faces]
+
+    normals = [normal / np.linalg.norm(normal) for normal in normals]
+
+    angle = np.arccos(np.dot(normals[0], normals[1]))
+
+    return angle
 
 
 
