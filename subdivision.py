@@ -112,10 +112,17 @@ def catmull_clark(dico):
 
     return {"faces": np.array(new_faces), "sommets": np.array(new_vertices), "aretes": set(tuple(sorted([face[i], face[(i+1)%len(face)]])) for face in new_faces for i in range(len(face))), 'nsommets': len(new_vertices), 'sharp_sommets': sharp_sommets, 'sharp_aretes': sharp_edgs}
 
+#model, dico_init = load_mesh("./modele_3D/trapeze_3D.obj")
 model, dico_init = load_mesh("./modele_3D/cube.obj")
+#model, dico_init = load_mesh("./modele_3D/croix.obj")
+#model, dico_init = load_mesh("./modele_3D/surface_courbee.obj")
 
 dico_init['sharp_sommets'] = []
-dico_init['sharp_aretes'] = [(4,5), (5,6), (6,7), (4,7), (0,1), (1,2), (2,3), (0,3)]
+#dico_init['sharp_sommets'] = [5]
+
+dico_init['sharp_aretes'] = []
+#dico_init['sharp_aretes'] = [(0,1), (1,2), (2,3), (0,3)]
+#dico_init['sharp_aretes'] = [(0,1), (1,2), (2,3), (0,3), (4, 5), (5, 6), (6, 7), (4, 7)]
 
 dico = dico_init.copy()
 affichage(dico, dico_init)
